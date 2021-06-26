@@ -31,7 +31,7 @@ public class Menu extends javax.swing.JFrame {
     DefaultTableModel modelo;
     DefaultTableModel modelo1;
     Operaciones operaciones;
-    String ruta_docum = "";
+    String ruta_archivo = "";
 
     /**
      * Creates new form Menu
@@ -73,7 +73,7 @@ public class Menu extends javax.swing.JFrame {
         int se = j.showOpenDialog(this);
         if (se == 0) {
             //this.btnseleccionarpdf.setText("" + j.getSelectedFile().getName());
-            String ruta_docum = j.getSelectedFile().getAbsolutePath();
+            String ruta_archivo = j.getSelectedFile().getAbsolutePath();
 
         } else {
         }
@@ -1027,23 +1027,33 @@ public class Menu extends javax.swing.JFrame {
        //   String id_tutor = Integer.toString(a);
      //     jTxtFolio.setText(id_tutor);
           int lada= Integer.parseInt(txtlada.getText());
-          int tel = Integer.parseInt(txttel.getText());
-          tutor = new Tutor( id_tutor, txtnombres.getText() ,txtapellidop.getText(), txtapellidom.getText(), txtcorreo.getText(), lada, tel);
+            int tel = Integer.parseInt(txttel.getText());
+            tutor = new Tutor( id_tutor, txtnombres.getText() ,txtapellidop.getText(), txtapellidom.getText(), txtcorreo.getText(), lada, tel);
+            
+         Persona persona;
+            int id_usuario;
+            persona = new Persona();
+            id_usuario = persona.getId_usuario();
+            //Persona persona = new Persona (id_usuario, nombres, primer_apellido, segundo_apellido, user, pass);
+            //int b = 0;
+            //   String id_tutor = Integer.toString(a);
+            //     jTxtFolio.setText(id_tutor);   
+            
+            
         
-            Institucion institucion;
+             Institucion institucion;
             int id_institucion;
             id_institucion = o.auto_institucion();
             institucion = new Institucion( id_institucion, txtinstitucion.getText());
+
             
           //  Persona persona = new Persona (id_usuario, nombres, primer_apellido, segundo_apellido, user, pass);
-        
-            Licenciatura licenciatura = null;
+        Licenciatura licenciatura;
             int folio = Integer.parseInt(jTxtFolio.getText());
             int semestre = Integer.parseInt(txtsemestre.getText());
             int no_alumnos = Integer.parseInt(txtnumalum.getText());
-            int Id_tutor = Inte
-                          
-           licenciatura = new Licenciatura( folio,txtgrado.getText() ,txtpractica.getText(), txtfinicio.getText(), txtftermino.getText(), no_alumnos ,  semestre, txtturno.getText(), txtentrada.getText(), txtsalida.getText(), id_institucion,);
+
+            licenciatura = new Licenciatura(folio, txtgrado.getText(), txtpractica.getText(), txtfinicio.getText(), txtftermino.getText(),  no_alumnos,  semestre, txtturno.getText(), txtentrada.getText(), txtsalida.getText(), id_institucion, id_tutor, id_usuario);
  
             operaciones.guardarLicenciaturas(licenciatura);
             operaciones.guardarinstitucion(institucion);
@@ -1109,14 +1119,13 @@ public class Menu extends javax.swing.JFrame {
         info[5] = txtfechtermino2.getText();
         modelo1.addRow(info);
 
-        
-        Servicios1 servicios1 = null;
+         Servicios1 servicios1 ;
         int folio = Integer.parseInt(jTxtFolio.getText());
-        int total = Integer.parseInt(txtotalalumnos2.getText());
-        int fecha_de_inicio = Integer.parseInt(txtfechinicio2.getText());
-        int fecha_de_termino = Integer.parseInt(txtfechtermino2.getText());
-        servicios1 = new Servicios1(folio, total, txtservicio2.getText(), fecha_de_inicio, fecha_de_termino);
+        int num_alumno = Integer.parseInt(txtotalalumnos2.getText());
+
+        servicios1 = new Servicios1(folio,txtservicio2.getText(), num_alumno ,txtfechinicio2.getText(),txtfechtermino2.getText());
         operaciones.guardarServicios1(servicios1);
+
 
         
         limpiar() ;
