@@ -33,13 +33,7 @@ public Tutor ( int id_tutor, String nom_tutor, String apellidoPaterno, String ap
 
 }
 
-   // public Tutor(String text, String text0, String text1, String text2) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
-    public Tutor(String id_tutor, String text, String text0, String text1, String text2, int lada, int tel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+       
 
     /**
      * @return the id_tutor
@@ -138,7 +132,5 @@ public Tutor ( int id_tutor, String nom_tutor, String apellidoPaterno, String ap
         this.tel = tel;
     }
 
-   // public String getId_tutor() {
-     ///   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-   // }
+   
 }

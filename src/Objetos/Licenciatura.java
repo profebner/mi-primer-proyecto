@@ -29,7 +29,7 @@ public class Licenciatura {
  
     
    
-    
+
     
 
         public Licenciatura( int folio, String grado, String practica, String fecha_inicio, String fecha_termino, int no_alumnos, int semestre, String turno, String hora_entrada, String hora_salida, int id_institucion, int id_tutor, int id_usuario) {
@@ -47,20 +47,8 @@ public class Licenciatura {
             this.id_institucion = id_institucion;
             this.id_tutor = id_tutor;
             this.id_usuario = id_usuario;
-           
-        }
-
-   /*public Licenciatura(int folio, String text, String text0, String text1, String text2, String text3, int semestre, String text4, String text5) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
-   }*/
-  //  public Licenciatura(int folio, String text, String text0, String text1, String text2, String text3, int semestre, String text4, String text5) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
-    public Licenciatura(int folio, String text, String text0, String text1, String text2, int no_alumnos, int semestre, String text3, String text4, String text5, int id_institucion, int id_tutor) {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+         
+         }
 
     /**
      * @return the folio
@@ -191,7 +179,7 @@ public class Licenciatura {
     /**
      * @return the hora_salida
      */
-    public String getHora_salida() {           
+    public String getHora_salida() {
         return hora_salida;
     }
 
@@ -242,9 +230,9 @@ public class Licenciatura {
      */
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
+    }
+
     
 
-
+ 
     }
-}
-

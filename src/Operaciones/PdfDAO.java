@@ -27,8 +27,10 @@ public class PdfDAO extends Conexion {
             while (rs.next()) {
                 PdfVO vo = new PdfVO();
                 vo.setCodigopdf(rs.getInt(1));
-                vo.setNombrepdf(rs.getString(2));
-                vo.setArchivopdf(rs.getBytes(3));
+                vo.setFolio(rs.getInt(2));
+                vo.setNombrepdf(rs.getString(3));
+                vo.setArchivopdf(rs.getBytes(4));
+                
                 list.add(vo);
             }
         } catch (SQLException ex) {
@@ -50,18 +52,19 @@ public class PdfDAO extends Conexion {
     /*Metodo agregar*/
     public void Agregar_PdfVO(PdfVO vo) {
         
-        String sql = "INSERT INTO pdf (codigopdf, nombrepdf, archivopdf, folio, institucion, fechainicio, fechatermino) VALUES(?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO pdf (codigopdf, folio, nombrepdf, archivopdf) VALUES(?, ?, ?, ?);";
         PreparedStatement ps = null;
         try {
             conectar();
             ps = conexion.prepareStatement(sql);
             ps.setInt(1, vo.getCodigopdf());
-            ps.setString(2, vo.getNombrepdf());
-            ps.setBytes(3, vo.getArchivopdf());
-            ps.setInt(4, vo.getFolio());
-            ps.setString(5, vo.getInstitucion());
-            ps.setString(6, vo.getFechainicio());
-            ps.setString(7, vo.getFechatermino());
+            ps.setInt(2, vo.getFolio());
+            ps.setString(3, vo.getNombrepdf());
+            ps.setBytes(4, vo.getArchivopdf());
+            
+            //ps.setString(5, vo.getInstitucion());
+            //ps.setString(6, vo.getFechainicio());
+            //ps.setString(7, vo.getFechatermino());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -85,9 +88,11 @@ public class PdfDAO extends Conexion {
         try {
             conectar();
             ps = conexion.prepareStatement(sql);
-            ps.setString(1, vo.getNombrepdf());
-            ps.setBytes(2, vo.getArchivopdf());
-            ps.setInt(3, vo.getCodigopdf());
+            ps.setInt(1, vo.getCodigopdf());
+            ps.setInt(2, vo.getFolio());
+            ps.setString(3, vo.getNombrepdf());
+            ps.setBytes(4, vo.getArchivopdf());
+            
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

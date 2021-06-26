@@ -94,7 +94,7 @@ public class Inicio extends javax.swing.JFrame {
         if(frminiciosesion==null){
            frminiciosesion = new InicioSesion();
            frminiciosesion.setVisible(true);
-            
+           this.setVisible(false);  
         }
         
     }//GEN-LAST:event_btningresarActionPerformed

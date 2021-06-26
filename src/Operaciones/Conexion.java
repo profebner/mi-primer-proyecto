@@ -37,7 +37,8 @@ public class Conexion{
   // final String registroold.db = "registroold.db";
   // Path rutaRelativa = Paths.get(registroold.db);
     
-    ruta = ("C:\\Sqliteman-1.2.2-win32\\Sqliteman-1.2.2\\registroold.db");
+    ruta = ("C:\\ProyectoHRAEI (2)\\Sqliteman-1.2.2\\registro.db");
+    
          
     //   a = ruta.getAbsolutePath();
       //  JOptionPane.showMessageDialog(null, rutaRelativa);
@@ -50,9 +51,12 @@ public class Conexion{
 	            JOptionPane.showMessageDialog(null, e.getMessage());
 	        }	 
 			try {
+                            
                             conexion = DriverManager.getConnection("jdbc:sqlite:"+ruta);
                             consulta = conexion.createStatement();
                             System.out.println("conexion establecida");
+                            
+                            
 			} catch (SQLException e) {
                             JOptionPane.showMessageDialog(null, e.getMessage());
                         }

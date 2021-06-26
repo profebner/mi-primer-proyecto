@@ -6,8 +6,8 @@
 package Objetos;
 
 /**
- *
- * @author Vianey
+ *  * 
+ @author Vianey
  */
 public class Servicios1 {
     
@@ -15,11 +15,11 @@ public class Servicios1 {
         public int folio;
         public String nombre_servicio;
         public int num_alumno;
-        public int fecha_de_inicio;
-        public int fecha_de_termino;
+        public String fecha_de_inicio;
+        public String fecha_de_termino;
          
     
-public Servicios1 (int folio, int num_alumno,String nombre_servicio,  int fecha_de_inicio, int fecha_de_termino ){
+public Servicios1 (int folio, String nombre_servicio, int num_alumno, String fecha_de_inicio, String fecha_de_termino ){
 
  
         this.folio = folio;
@@ -27,20 +27,8 @@ public Servicios1 (int folio, int num_alumno,String nombre_servicio,  int fecha_
         this.num_alumno = num_alumno;
         this.fecha_de_inicio = fecha_de_inicio;
         this.fecha_de_termino = fecha_de_termino;
-        
 
-    
 }
-    //public Servicios1(int folio, String text, int total, String text0, String text1) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
-  //  public Servicios1(int folio, int total, String text, int fecha_de_inicio, int fecha_de_termino) {
-      // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-   
-
-    /**
-     * @return the id_servicios
-     */
 
     /**
      * @return the folio
@@ -87,34 +75,28 @@ public Servicios1 (int folio, int num_alumno,String nombre_servicio,  int fecha_
     /**
      * @return the fecha_de_inicio
      */
-    public int getFecha_de_inicio() {
+    public String getFecha_de_inicio() {
         return fecha_de_inicio;
     }
 
     /**
      * @param fecha_de_inicio the fecha_de_inicio to set
      */
-    public void setFecha_de_inicio(int fecha_de_inicio) {
+    public void setFecha_de_inicio(String fecha_de_inicio) {
         this.fecha_de_inicio = fecha_de_inicio;
     }
 
     /**
      * @return the fecha_de_termino
      */
-    public int getFecha_de_termino() {
+    public String getFecha_de_termino() {
         return fecha_de_termino;
     }
 
     /**
      * @param fecha_de_termino the fecha_de_termino to set
      */
-    public void setFecha_de_termino(int fecha_de_termino) {
+    public void setFecha_de_termino(String fecha_de_termino) {
         this.fecha_de_termino = fecha_de_termino;
     }
 }
-    
-
-    /**
-     * @return the id_servicios
-     */
-   

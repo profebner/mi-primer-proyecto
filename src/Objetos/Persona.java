@@ -21,7 +21,7 @@ public class Persona {
      
      }
 
-    public Persona( int id_usuario,String nombres, String primer_apellido, String segundo_apellido, String pass, String usuario) {
+    public Persona( int id_usuario, String nombres, String primer_apellido, String segundo_apellido, String pass, String usuario) {
         this.id_usuario = id_usuario;
         this.nombres = nombres;
         this.primer_apellido = primer_apellido;
@@ -32,7 +32,6 @@ public class Persona {
     }
 
    
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
     /**
      * @return the id_usuario
@@ -45,8 +44,8 @@ public class Persona {
      * @param id_usuario the id_usuario to set
      */
     public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
-    }
+       this.id_usuario = id_usuario;
+   }
 
     /**
      * @return the nombres

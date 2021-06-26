@@ -89,6 +89,7 @@ public class Operaciones extends Conexion{
     }
     
      public void guardarLicenciaturas(Licenciatura licenciatura){
+      //  int folio = auto_lic();
         insertar("insert into Licenciatura values('"+licenciatura.getFolio()
                     +"', '"+licenciatura.getGrado()
                     +"','"+licenciatura.getPractica()
@@ -99,7 +100,7 @@ public class Operaciones extends Conexion{
                     +"','"+licenciatura.getTurno()
                     +"','"+licenciatura.getHora_entrada()
                     +"','"+licenciatura.getHora_salida()
-                    +"',"+auto_lic()
+                    //+"',"+auto_lic()
                     +",'"+licenciatura.getId_institucion()
                     +"',"+licenciatura.getId_tutor()+","+licenciatura.getId_usuario()+")");
                     
@@ -146,7 +147,7 @@ public class Operaciones extends Conexion{
         try {
             conectar();
             //"select * from licenciatura where institucion=?"
-            pst = conexion.prepareStatement("select  nom_inst, practica, no_alumnos,  fecha_inicio, fecha_termino, nom_tutor, apellidoPaterno, apellidoMaterno from licenciatura inner join institucion on  institucion.id_institución = licenciatura.id_institucion inner join  tutor  on tutor.id_tutor = licenciatura.folio where institucion.nom_inst = ? ");
+            pst = conexion.prepareStatement("select  nom_inst, practica, no_alumnos,  fecha_inicio, fecha_termino, nom_tutor, apellidoPaterno, apellidoMaterno from licenciatura inner join institucion on  institucion.id_institucion = licenciatura.id_institucion inner join  tutor  on tutor.id_tutor = licenciatura.folio where institucion.nom_inst = ? ");
             
             pst.setString(1, lic);
         resultado = pst.executeQuery();
@@ -191,7 +192,7 @@ public class Operaciones extends Conexion{
         
         try {
             conectar();
-            pst = conexion.prepareStatement("select ruta_docum as ruta_cartasol, ruta_cartacep, ruta_docum, ruta_docum as nom_inst, fecha_inicio, fecha_termino,turno from licenciatura inner join institucion on institucion.id_institución = licenciatura.id_institucion inner join pdf on pdf.folio = licenciatura.folio where institucion.nom_inst = ?");
+            pst = conexion.prepareStatement("select ruta_docum as ruta_cartasol, ruta_cartacep, ruta_docum, ruta_docum as nom_inst, fecha_inicio, fecha_termino,turno from licenciatura inner join institucion on institucion.id_institucion = licenciatura.id_institucion inner join pdf on pdf.folio = licenciatura.folio where institucion.nom_inst = ?");
             
             pst.setString(1, doc);
         resultado = pst.executeQuery();
@@ -534,7 +535,7 @@ public class Operaciones extends Conexion{
         
         try {
             conectar();
-            pst = conexion.prepareStatement("select nom_inst, nombre_servicio, no_alumnos,  fecha_inicio, fecha_termino from licenciatura inner join institucion on  institucion.id_institución = licenciatura.id_institucion inner join  servicios1 on servicios1.folio = licenciatura.folio  where institucion.nom_inst =?");
+            pst = conexion.prepareStatement("select nom_inst, nombre_servicio, no_alumnos,  fecha_inicio, fecha_termino from licenciatura inner join institucion on  institucion.id_institucion = licenciatura.id_institucion inner join  servicios1 on servicios1.folio = licenciatura.folio  where institucion.nom_inst =?");
             pst.setString(1, ins);
         resultado = pst.executeQuery();
             if(resultado != null){
@@ -639,7 +640,7 @@ public int auto_institucion() {
         ResultSet rs = null;
         conectar();
         try {
-            ps = conexion.prepareStatement("select Max(id_institución) from institucion;");
+            ps = conexion.prepareStatement("select Max(id_institucion) from institucion;");
                   //  getConnection().String(sql);
             rs = ps.executeQuery();
             while (rs.next()) {

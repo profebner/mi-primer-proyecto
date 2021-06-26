@@ -22,9 +22,10 @@ public class Tabla_PdfVO {
             }
         };
         dt.addColumn("codigopdf");
+        dt.addColumn("folio");
         dt.addColumn("nombrepdf");
         dt.addColumn("archivopdf");
-
+        
         ImageIcon icono = null;
         if (get_Image("/Imagen/32pdf.png") != null) {
             icono = new ImageIcon(get_Image("/Imagen/32pdf.png"));
@@ -36,21 +37,25 @@ public class Tabla_PdfVO {
 
         if (list.size() > 0) {
             for (int i = 0; i < list.size(); i++) {
-                Object fila[] = new Object[3];
+                Object fila[] = new Object[4];
                 vo = list.get(i);
                 fila[0] = vo.getCodigopdf();
-                fila[1] = vo.getNombrepdf();
+                fila[1] = vo.getFolio();
+                fila[2] = vo.getNombrepdf();
                 if (vo.getArchivopdf() != null) {
-                    fila[2] = new JButton(icono);
+                    fila[3] = new JButton(icono);
+               
                 } else {
-                    fila[2] = new JButton("Vacio");
+                    fila[3] = new JButton("Vacio");
                 }
 
                 dt.addRow(fila);
             }
             tabla.setModel(dt);
             tabla.setRowHeight(32);
-        }
+        
+    }
+        
     }
 
     public Image get_Image(String ruta) {

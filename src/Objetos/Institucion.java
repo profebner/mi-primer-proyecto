@@ -31,7 +31,7 @@ public class Institucion {
     
 
     /**
-     * @return the id_institución
+     * @return the id_institucion
      */
     public int getId_institucion(){
       return id_institucion;
@@ -55,7 +55,6 @@ public class Institucion {
         this.nom_inst = nom_inst;
     }
 
-  /*  public String getId_institucion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  /*
     }*/
 }
