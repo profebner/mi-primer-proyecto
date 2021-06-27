@@ -21,7 +21,7 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
          setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Inicio");
+       // setTitle("Inicio");
     }
 
     /**
