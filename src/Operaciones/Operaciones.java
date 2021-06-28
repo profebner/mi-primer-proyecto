@@ -50,6 +50,7 @@ public class Operaciones extends Conexion{
         conectar();
         try {
             consulta.executeUpdate(sql);
+           
         } catch (SQLException e) {
                 valor = false;
                 JOptionPane.showMessageDialog(null, e.getMessage());
@@ -127,7 +128,6 @@ public class Operaciones extends Conexion{
                     +"','"+servicios1.getNum_alumno()
                     +"','"+servicios1.getFecha_de_inicio()
                     +"','"+servicios1.getFecha_de_termino()+"')");
-      
       } 
       
       public void guardarinstitucion(Institucion institucion){

@@ -10,6 +10,7 @@ import Objetos.Licenciatura;
 import Objetos.Tutor;
 import Objetos.Servicios1;
 import Objetos.Persona;
+import Operaciones.Conexion;
 import Operaciones.Operaciones;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
@@ -1138,7 +1139,7 @@ public class Menu extends javax.swing.JFrame {
         info[4] = txtfechinicio2.getText();
         info[5] = txtfechtermino2.getText();
         modelo1.addRow(info);
-
+        
          Servicios1 servicios1 ;
         int id_servicio;
         id_servicio = operaciones.auto_servicios();
