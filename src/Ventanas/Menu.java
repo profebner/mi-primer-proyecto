@@ -1140,10 +1140,12 @@ public class Menu extends javax.swing.JFrame {
         modelo1.addRow(info);
 
          Servicios1 servicios1 ;
-        int folio = Integer.parseInt(jTxtFolio.getText());
+        int id_servicio;
+        id_servicio = operaciones.auto_servicios();
+         int folio = Integer.parseInt(jTxtFolio.getText());
         int num_alumno = Integer.parseInt(txtotalalumnos2.getText());
 
-        servicios1 = new Servicios1(folio,txtservicio2.getText(), num_alumno ,txtfechinicio2.getText(),txtfechtermino2.getText());
+        servicios1 = new Servicios1(id_servicio,folio,txtservicio2.getText(), num_alumno ,txtfechinicio2.getText(),txtfechtermino2.getText());
         operaciones.guardarServicios1(servicios1);
 
 

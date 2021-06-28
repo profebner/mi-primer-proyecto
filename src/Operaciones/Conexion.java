@@ -37,7 +37,7 @@ public class Conexion{
   // final String registroold.db = "registroold.db";
   // Path rutaRelativa = Paths.get(registroold.db);
     
-    ruta = ("C:\\ProyectoHRAEI (2)\\Sqliteman-1.2.2\\registro.db");
+    ruta = ("c:\\Users\\ontas\\Documents\\GitHub\\mi-primer-proyecto\\Sqliteman-1.2.2\\registro.db");
     
          
     //   a = ruta.getAbsolutePath();

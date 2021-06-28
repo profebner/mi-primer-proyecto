@@ -121,7 +121,7 @@ public class Operaciones extends Conexion{
       } 
       
       public void guardarServicios1(Servicios1 servicios1){
-        insertar("insert into Servicios1 values('"+servicios1
+        insertar("insert into Servicios1 values('"+servicios1.getId_servicio()
                     +"', '"+servicios1.getFolio()
                     +"','"+servicios1.getNombre_servicio()
                     +"','"+servicios1.getNum_alumno()
@@ -694,6 +694,33 @@ public int auto_incrementablepersona() {
         }
         return id;
     }
-   
+   public int auto_servicios() {
+        int id = 1;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        conectar();
+        try {
+            ps = conexion.prepareStatement("select Max(id_servicio) from servicios1;");
+                  //  getConnection().String(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt(1) + 1;
+            }
+        } catch (Exception ex) {
+            System.out.println("idmaximo" + ex.getMessage());
+            id = 1;
+        } finally {
+           try{
+               ps.close();
+               rs.close();
+               conexion.close();
+               
+           }
+           catch(Exception ex){
+               
+           }
+        }
+        return id;
+    }
 }
     
