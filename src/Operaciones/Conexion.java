@@ -56,7 +56,6 @@ public class Conexion{
                             consulta = conexion.createStatement();
                             System.out.println("conexion establecida");
                             
-                            
 			} catch (SQLException e) {
                             JOptionPane.showMessageDialog(null, e.getMessage());
                         }

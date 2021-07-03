@@ -1140,7 +1140,7 @@ public class Menu extends javax.swing.JFrame {
         info[5] = txtfechtermino2.getText();
         modelo1.addRow(info);
         
-         Servicios1 servicios1 ;
+        Servicios1 servicios1 ;
         int id_servicio;
         id_servicio = operaciones.auto_servicios();
          int folio = Integer.parseInt(jTxtFolio.getText());
@@ -1148,9 +1148,8 @@ public class Menu extends javax.swing.JFrame {
 
         servicios1 = new Servicios1(id_servicio,folio,txtservicio2.getText(), num_alumno ,txtfechinicio2.getText(),txtfechtermino2.getText());
         operaciones.guardarServicios1(servicios1);
-
-
         
+                
         limpiar() ;
         txtservicio2.setText("");
         txtotalalumnos2.setText("");
