@@ -21,7 +21,7 @@ public class RegistroUser extends javax.swing.JFrame {
     public RegistroUser(){
         initComponents();
         operaciones = new Operaciones();
-        operaciones.conectar();
+        //operaciones.conectar();
          setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Registro de usuarios");
@@ -262,7 +262,7 @@ public class RegistroUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        operaciones.totalPersonas((DefaultTableModel)jTPersonas.getModel());
+       operaciones.totalPersonas((DefaultTableModel)jTPersonas.getModel());
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

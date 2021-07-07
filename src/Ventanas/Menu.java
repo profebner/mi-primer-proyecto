@@ -47,7 +47,7 @@ public class Menu extends javax.swing.JFrame {
         setTitle("Registro de campos clínicos");
 
         operaciones = new Operaciones();
-        operaciones.conectar();
+        //operaciones.conectar();
         modelo = new DefaultTableModel();
         modelo.addColumn("Folio1");
         modelo.addColumn("Institucion");

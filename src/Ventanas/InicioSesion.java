@@ -25,7 +25,7 @@ public class InicioSesion extends javax.swing.JFrame {
     public InicioSesion() {
         initComponents();
         Operaciones oper = new Operaciones();
-        oper.conectar();
+        //oper.conectar();
          setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Inicio de sesión");

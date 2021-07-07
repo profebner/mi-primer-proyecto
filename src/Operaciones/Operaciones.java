@@ -268,6 +268,8 @@ public class Operaciones extends Conexion{
                 }
             }
             resultado.close();
+            consulta.close();
+            conexion.close();
         }catch(SQLException e){
         }
 
@@ -275,11 +277,12 @@ public class Operaciones extends Conexion{
      {
          try
          {
-             consulta.close();
-             conexion.close();
+             
              if(resultado != null){
                 resultado.close();
              }
+             consulta.close();
+             conexion.close();
          }
          catch (Exception e)
          {
