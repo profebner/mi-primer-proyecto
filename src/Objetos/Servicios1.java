@@ -11,7 +11,7 @@ package Objetos;
  */
 public class Servicios1 {
     
-       
+        public int id_servicio;
         public int folio;
         public String nombre_servicio;
         public int num_alumno;
@@ -19,9 +19,9 @@ public class Servicios1 {
         public String fecha_de_termino;
          
     
-public Servicios1 (int folio, String nombre_servicio, int num_alumno, String fecha_de_inicio, String fecha_de_termino ){
+public Servicios1 (int id_servicio, int folio, String nombre_servicio, int num_alumno, String fecha_de_inicio, String fecha_de_termino ){
 
- 
+        this.id_servicio = id_servicio;
         this.folio = folio;
         this.nombre_servicio = nombre_servicio;
         this.num_alumno = num_alumno;
@@ -98,5 +98,19 @@ public Servicios1 (int folio, String nombre_servicio, int num_alumno, String fec
      */
     public void setFecha_de_termino(String fecha_de_termino) {
         this.fecha_de_termino = fecha_de_termino;
+    }
+
+    /**
+     * @return the id_servicio
+     */
+    public int getId_servicio() {
+        return id_servicio;
+    }
+
+    /**
+     * @param id_servicio the id_servicio to set
+     */
+    public void setId_servicio(int id_servicio) {
+        this.id_servicio = id_servicio;
     }
 }

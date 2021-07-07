@@ -5,7 +5,6 @@
  */
 package Operaciones;
 
-import Operaciones.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 

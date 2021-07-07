@@ -31,8 +31,6 @@ public class Persona {
         
     }
 
-   
-
     /**
      * @return the id_usuario
      */
@@ -44,8 +42,8 @@ public class Persona {
      * @param id_usuario the id_usuario to set
      */
     public void setId_usuario(int id_usuario) {
-       this.id_usuario = id_usuario;
-   }
+        this.id_usuario = id_usuario;
+    }
 
     /**
      * @return the nombres
@@ -116,6 +114,13 @@ public class Persona {
     public void setPass(String pass) {
         this.pass = pass;
     }
+
+   
+
+    /**
+     * @return the id_usuario
+     */
+    
+    }
     
 
-}

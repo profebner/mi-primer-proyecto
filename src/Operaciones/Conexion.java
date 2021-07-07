@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -56,7 +56,7 @@ public class Conexion{
                             consulta = conexion.createStatement();
                             System.out.println("conexion establecida");
                             
-                            
+             //  conexion.close();              
 			} catch (SQLException e) {
                             JOptionPane.showMessageDialog(null, e.getMessage());
                         }

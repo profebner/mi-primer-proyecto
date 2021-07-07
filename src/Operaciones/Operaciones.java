@@ -25,6 +25,8 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
  
@@ -50,6 +52,8 @@ public class Operaciones extends Conexion{
         conectar();
         try {
             consulta.executeUpdate(sql);
+            consulta.close();
+            conexion.close();
         } catch (SQLException e) {
                 valor = false;
                 JOptionPane.showMessageDialog(null, e.getMessage());
@@ -69,6 +73,8 @@ public class Operaciones extends Conexion{
         resultado = null;
         try {
             resultado = consulta.executeQuery(sql);
+            resultado.close();
+            conexion.close();
 
         } catch (SQLException e) {
                 System.out.println("Mensaje:"+e.getMessage());
@@ -80,17 +86,23 @@ public class Operaciones extends Conexion{
     }
 
     public void guardarUsuario(Persona persona){
-        insertar("insert into Persona values("+persona.getId_usuario()
+        try {
+            insertar("insert into Persona values("+persona.getId_usuario()
                     +",'"+persona.getNombres()
                     +"','"+persona.getPrimer_apellido()
                     +"','"+persona.getSegundo_apellido()
                     +"','"+persona.getUsuario()
                     +"','"+persona.getPass()+"')");
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
      public void guardarLicenciaturas(Licenciatura licenciatura){
-      //  int folio = auto_lic();
-        insertar("insert into Licenciatura values('"+licenciatura.getFolio()
+        try {
+            //  int folio = auto_lic();
+            insertar("insert into Licenciatura values('"+licenciatura.getFolio()
                     +"', '"+licenciatura.getGrado()
                     +"','"+licenciatura.getPractica()
                     +"','"+licenciatura.getFecha_inicio()
@@ -103,6 +115,10 @@ public class Operaciones extends Conexion{
                     //+"',"+auto_lic()
                     +",'"+licenciatura.getId_institucion()
                     +"',"+licenciatura.getId_tutor()+","+licenciatura.getId_usuario()+")");
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
                     
    
     }
@@ -110,30 +126,43 @@ public class Operaciones extends Conexion{
   
      
       public void guardartutor(Tutor tutor){
-        insertar("insert into Servicios values('"+tutor.getId_tutor()
+        try {
+            insertar("insert into Servicios values('"+tutor.getId_tutor()
                     +"',.'"+tutor.getNom_tutor()
                     +"','"+tutor.getApellidoPaterno()
                     +"','"+tutor.getApellidoMaterno()
                     +"','"+tutor.getCorreo()
                     +"','"+tutor.getLada()
                     +"','"+tutor.getTel()+"')");
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
      
       } 
       
       public void guardarServicios1(Servicios1 servicios1){
-        insertar("insert into Servicios1 values('"+servicios1
+        try {
+            insertar("insert into servicios1 values('"+servicios1.getId_servicio()
                     +"', '"+servicios1.getFolio()
                     +"','"+servicios1.getNombre_servicio()
                     +"','"+servicios1.getNum_alumno()
                     +"','"+servicios1.getFecha_de_inicio()
                     +"','"+servicios1.getFecha_de_termino()+"')");
-      
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
       } 
       
       public void guardarinstitucion(Institucion institucion){
-        insertar("insert into institución values('"+institucion.getId_institucion()
-        +"','"+institucion.getNom_inst()+"')");
-        
+        try {
+            insertar("insert into institución values('"+institucion.getId_institucion()
+                    +"','"+institucion.getNom_inst()+"')");
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
      
       }
       
@@ -164,6 +193,7 @@ public class Operaciones extends Conexion{
                     tableModel.addRow(objetos);
                 }
             }
+            
         }catch(SQLException e){
         }
 
@@ -237,6 +267,7 @@ public class Operaciones extends Conexion{
         tableModel.setColumnCount(0);
         String sql = "select nombres, primer_apellido, segundo_apellido, usuario from persona";
         try {
+           conectar();
             resultado = consultar(sql);
             if(resultado != null){
                 int numeroColumna = resultado.getMetaData().getColumnCount();
@@ -251,6 +282,8 @@ public class Operaciones extends Conexion{
                     tableModel.addRow(objetos);
                 }
             }
+            
+            resultado.close();
         }catch(SQLException e){
         }
 
@@ -389,8 +422,7 @@ public class Operaciones extends Conexion{
             rs = ps.executeQuery();
             //JOptionPane.showMessageDialog(null, rs.next());
             if(rs.next()){
-                
-                                
+                                                
                 if(usr.getPass().equals(rs.getString(3))){
                     usr.setId_usuario(rs.getInt(1));
                     usr.setNombres(rs.getString(2));
@@ -401,11 +433,12 @@ public class Operaciones extends Conexion{
                     
                 }
             }
+           conexion.close();
             return false;
-                
+           
         }catch(SQLException e){
                 return false;
-                }
+               }
        
     }
     
@@ -551,6 +584,9 @@ public class Operaciones extends Conexion{
                     tableModel.addRow(objetos);
                 }
             }
+            pst.close();
+                resultado.close();
+                conexion.close();
         }catch(SQLException e){
         }
 
@@ -587,6 +623,9 @@ public int auto_lic() {
             rs = ps.executeQuery();
             while (rs.next()) {
                 id = rs.getInt(1) + 1;
+                ps.close();
+                rs.close();
+                conexion.close();
             }
         } catch (Exception ex) {
             System.out.println("idmaximo" + ex.getMessage());
@@ -616,6 +655,9 @@ public int auto_tutor() {
             rs = ps.executeQuery();
             while (rs.next()) {
                 id = rs.getInt(1) + 1;
+                ps.close();
+                rs.close();
+                conexion.close();
             }
         } catch (Exception ex) {
             System.out.println("idmaximo" + ex.getMessage());
@@ -645,6 +687,9 @@ public int auto_institucion() {
             rs = ps.executeQuery();
             while (rs.next()) {
                 id = rs.getInt(1) + 1;
+                ps.close();
+                rs.close();
+                conexion.close();
             }
         } catch (Exception ex) {
             System.out.println("idmaximo" + ex.getMessage());
@@ -677,6 +722,9 @@ public int auto_incrementablepersona() {
             rs = ps.executeQuery();
             while (rs.next()) {
                 id = rs.getInt(1) + 1;
+                ps.close();
+                rs.close();
+                conexion.close();
             }
         } catch (Exception ex) {
             System.out.println("idmaximo" + ex.getMessage());
@@ -694,6 +742,36 @@ public int auto_incrementablepersona() {
         }
         return id;
     }
-   
+   public int auto_servicios() {
+        int id = 1;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        conectar();
+        try {
+            ps = conexion.prepareStatement("select Max(id_servicio) from servicios1;");
+                  //  getConnection().String(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt(1) + 1;
+                ps.close();
+                rs.close();
+                conexion.close();
+            }
+        } catch (Exception ex) {
+            System.out.println("idmaximo" + ex.getMessage());
+            id = 1;
+        } finally {
+           try{
+               ps.close();
+               rs.close();
+               conexion.close();
+               
+           }
+           catch(Exception ex){
+               
+           }
+        }
+        return id;
+    }
 }
     
