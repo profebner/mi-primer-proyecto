@@ -13,18 +13,18 @@ import Objetos.Licenciatura;
 import Objetos.Tutor;
 import Objetos.Servicios1;
 import Objetos.Institucion;
-import Objetos.Pdf;
-import Ventanas.RegistroUser;
-import Ventanas.InicioSesion;
-import Ventanas.Menu;
-import java.sql.Connection;
+//import Objetos.Pdf;
+//import Ventanas.RegistroUser;
+//import Ventanas.InicioSesion;
+//import Ventanas.Menu;
+//import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -54,6 +54,7 @@ public class Operaciones extends Conexion{
             consulta.executeUpdate(sql);
             consulta.close();
             conexion.close();
+            System.out.println("conexion cerrada");
         } catch (SQLException e) {
                 valor = false;
                 JOptionPane.showMessageDialog(null, e.getMessage());
@@ -62,8 +63,8 @@ public class Operaciones extends Conexion{
             try{    
                  consulta.close();  
                  conexion.close();  
-             }catch (Exception e){                 
-                 e.printStackTrace();  
+             }catch (Exception e){
+                 
              }  
         }
         return valor;
@@ -132,17 +133,17 @@ public class Operaciones extends Conexion{
       } 
       
       public void guardarServicios1(Servicios1 servicios1){
-        try {
+       // try {
             insertar("insert into servicios1 values('"+servicios1.getId_servicio()
                     +"', '"+servicios1.getFolio()
                     +"','"+servicios1.getNombre_servicio()
                     +"','"+servicios1.getNum_alumno()
                     +"','"+servicios1.getFecha_de_inicio()
                     +"','"+servicios1.getFecha_de_termino()+"')");
-            conexion.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            //conexion.close();
+        //.} catch (SQLException ex) {
+           //. Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        //}
       } 
       
       public void guardarinstitucion(Institucion institucion){
