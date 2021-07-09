@@ -1053,10 +1053,11 @@ public class Menu extends javax.swing.JFrame {
             int id_usuario;
             persona = new Persona();
             id_usuario = persona.getId_usuario();
+            System.out.println("el usuario es: " + id_usuario );
             //Persona persona = new Persona (id_usuario, nombres, primer_apellido, segundo_apellido, user, pass);
             //int b = 0;
             //   String id_tutor = Integer.toString(a);
-            //     jTxtFolio.setText(id_tutor);   
+            //     jTxtFolio.setText(id_tutor);  
             
             
         
@@ -1141,7 +1142,7 @@ public class Menu extends javax.swing.JFrame {
 
         Servicios1 servicios1 ;
         int id_servicio;
-        id_servicio = operaciones . auto_servicios ();
+        id_servicio = operaciones.auto_servicios();
         int folio = Integer.parseInt(jTxtFolio.getText());
         int num_alumno = Integer.parseInt(txtotalalumnos2.getText());
 
@@ -1150,7 +1151,7 @@ public class Menu extends javax.swing.JFrame {
 
 
         
-        limpiar() ;
+        //limpiar() ;
         txtservicio2.setText("");
         txtotalalumnos2.setText("");
         txtfechinicio2.setText("");

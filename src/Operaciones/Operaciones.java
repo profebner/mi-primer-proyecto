@@ -34,6 +34,7 @@ public class Operaciones extends Conexion{
     static ResultSetMetaData resultadometa;
     static ResultSet resultado; 
     
+    
 
     public static void guardarLicenciatura(Licenciatura licenciatura) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -50,22 +51,18 @@ public class Operaciones extends Conexion{
     public boolean insertar(String sql){
         boolean valor = true;
         conectar();
-        try {
+        try{
             consulta.executeUpdate(sql);
             consulta.close();
-            conexion.close();
-        } catch (SQLException e) {
+            }
+        catch (SQLException e){
                 valor = false;
                 JOptionPane.showMessageDialog(null, e.getMessage());
-            }      
-        finally{  
-            try{    
-                 consulta.close();  
-                 conexion.close();  
-             }catch (Exception e){                 
-                 e.printStackTrace();  
-             }  
-        }
+            }
+        //finally{  
+        //        consulta.close();  
+        //        conexion.close();   
+        //}
         return valor;
     }
     public ResultSet consultar(String sql){
@@ -143,13 +140,21 @@ public class Operaciones extends Conexion{
       
       public void guardarServicios1(Servicios1 servicios1){
         try {
-            insertar("insert into servicios1 values('"+servicios1.getId_servicio()
+            conectar();
+            consulta.executeUpdate("insert into servicios1 values('"+servicios1.getId_servicio()
                     +"', '"+servicios1.getFolio()
                     +"','"+servicios1.getNombre_servicio()
                     +"','"+servicios1.getNum_alumno()
                     +"','"+servicios1.getFecha_de_inicio()
                     +"','"+servicios1.getFecha_de_termino()+"')");
+            consulta.close();
             conexion.close();
+            /*insertar("insert into servicios1 values('"+servicios1.getId_servicio()
+            +"', '"+servicios1.getFolio()
+            +"','"+servicios1.getNombre_servicio()
+            +"','"+servicios1.getNum_alumno()
+            +"','"+servicios1.getFecha_de_inicio()
+            +"','"+servicios1.getFecha_de_termino()+"')");*/
         } catch (SQLException ex) {
             Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -755,7 +760,7 @@ public int auto_incrementablepersona() {
                 id = rs.getInt(1) + 1;
                 ps.close();
                 rs.close();
-                conexion.close();
+                //conexion.close();
             }
         } catch (Exception ex) {
             System.out.println("idmaximo" + ex.getMessage());
