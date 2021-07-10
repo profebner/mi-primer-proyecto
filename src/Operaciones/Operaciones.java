@@ -34,6 +34,8 @@ public class Operaciones extends Conexion{
     static ResultSetMetaData resultadometa;
     static ResultSet resultado; 
     
+  
+    
     
 
     public static void guardarLicenciatura(Licenciatura licenciatura) {
